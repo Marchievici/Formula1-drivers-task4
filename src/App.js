@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { mockData } from "./mockData.js";
+import { CardComponent } from "./cardComponent.js";
 
 function App() {
+  const sortedDrivers = function (data) {
+    data.sort((a, b) => {
+      return b.points - a.points;
+    });
+  };
+  sortedDrivers(mockData);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="flex container">
+      {mockData.map((driver, index) => {
+        return (
+          <CardComponent key={driver.number} driver={driver} index={index} />
+        );
+      })}
     </div>
   );
 }

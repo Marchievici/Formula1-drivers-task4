@@ -1,38 +1,277 @@
-.App {
-  text-align: center;
+@font-face {
+  font-family: formula-1-regular;
+  src: url(./fonts/Formula1-Regular_web_0.ttf);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@font-face {
+  font-family: formula-1-bold;
+  src: url(./fonts/Formula1-Bold_web_0.ttf);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+* {
+  padding: 0;
+  margin: 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+html {
+  /* 10px / 16px = 0.625 = 62.5% */
+  /* Percentage of user's browser font-size setting */
+  font-size: 62.5%;
+}
+
+body {
+  font-family: formula-1-regular;
+  line-height: 1;
+  color: #333;
+}
+
+.container {
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.flex {
+  display: flex;
+}
+
+.card {
+  width: 32rem;
+  height: 31rem;
+  margin: 5rem 0 2rem 3rem;
+  padding: 1rem 1rem 0 1rem;
+  border-top: 0.2rem solid #444;
+  border-right: 0.2rem solid #444;
+  border-top-right-radius: 1.1rem;
+
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* justify-content: space-between; */
+}
+
+.card:hover {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  cursor: pointer;
+  border-color: #3671c6;
+}
+
+.card-item {
+  border-bottom: 0.1rem solid #555;
+}
+
+.nr-points {
+  flex-direction: column;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.points {
+  color: #fff;
+  background: #555;
+  font-size: 1.6rem;
+  letter-spacing: 0.4rem;
+
+  display: flex;
+  justify-content: center;
+
+  padding: 0;
 }
 
-@keyframes App-logo-spin {
+.number-points {
+  font-size: 2rem;
+  letter-spacing: 0.15rem;
+  align-self: flex-end;
+}
+
+.score {
+  justify-content: space-between;
+  font-size: 3.2rem;
+  font-weight: 700;
+  padding-bottom: 0.2rem;
+}
+
+.placement {
+  display: flex;
+  align-items: center;
+
+  font-size: 4.8rem;
+  font-family: formula-1-bold;
+}
+
+.full-name {
+  font-size: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  border-left: 0.5rem solid;
+  padding-left: 1rem;
+  /* padding-bottom: 1rem; */
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.name {
+  font-family: formula-1-bold;
+  font-size: 2.4rem;
+  margin-top: 0.5rem;
+}
+
+.team {
+  font-size: 1.4rem;
+  /* margin-bottom: 1rem;
+  margin-top: 1rem; */
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
+}
+
+.pilot-image {
+  justify-content: space-between;
+  position: relative;
+  background-image: url("https://www.formula1.com/etc/designs/fom-website/images/patterns/plus-x1.png");
+  justify-content: end;
+}
+
+.pilot-number {
+  bottom: 0;
+  left: 0;
+  padding: 0 0.8rem;
+  position: absolute;
+  font-size: 6rem;
+  font-family: formula-1-bold;
+  background-color: white;
+  color: #e10d20;
+}
+
+.card-item:nth-child(2) {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flag-icon {
+  width: 6rem;
+  height: 100%;
+  border-radius: 0.7rem;
+  padding: 0;
+}
+
+.btn-increase {
+  color: #fff;
+  background-color: #222;
+  cursor: pointer;
+  padding: 0.2rem 0.4rem;
+  margin-top: 0.1rem;
+  border: none;
+}
+
+.btn-increase:hover {
+  background-color: #666;
+}
+
+@keyframes bounce {
   from {
-    transform: rotate(0deg);
+    transform: translateY(0);
   }
   to {
-    transform: rotate(360deg);
+    transform: translateY(-0.2rem);
+  }
+}
+
+.card:hover > .score > .nr-points > .points,
+.card:hover > .card-item > .full-name > .first-name,
+.card:hover > .pilot-image > img {
+  animation-name: bounce;
+  animation-duration: 0.15s;
+}
+
+.RedBullRacing:hover {
+  border-color: #3671c6;
+}
+
+.RedBullRacing > .card-item > .full-name {
+  border-color: #3671c6;
+}
+
+.Mercedes:hover {
+  border-color: #6cd3bf;
+}
+
+.Mercedes > .card-item > .full-name {
+  border-color: #6cd3bf;
+}
+
+.McLaren:hover {
+  border-color: #3671c6;
+}
+
+.McLaren > .card-item > .full-name {
+  border-color: #3671c6;
+}
+
+.AstonMartin:hover {
+  border-color: #358c75;
+}
+
+.AstonMartin > .card-item > .full-name {
+  border-color: #358c75;
+}
+
+.Ferrari:hover {
+  border-color: #f91437;
+}
+
+.Ferrari > .card-item > .full-name {
+  border-color: #f91437;
+}
+
+.AlphaTauri:hover {
+  border-color: #5e8faa;
+}
+
+.AlphaTauri > .card-item > .full-name {
+  border-color: #5e8faa;
+}
+
+.AlfaRomeo:hover {
+  border-color: #c92c4a;
+}
+
+.AlfaRomeo > .card-item > .full-name {
+  border-color: #c92c4a;
+}
+
+.HaasF1Team:hover {
+  border-color: #b7bbbd;
+}
+
+.HaasF1Team > .card-item > .full-name {
+  border-color: #b7bbbd;
+}
+.Williams:hover {
+  border-color: #37bfdc;
+}
+
+.Williams > .card-item > .full-name {
+  border-color: #37bfdc;
+}
+
+.Alpine:hover {
+  border-color: #37bfdc;
+}
+
+.Alpine > .card-item > .full-name {
+  border-color: #37bfdc;
+}
+
+@media (max-width: 60em) {
+  .card {
+    width: 60rem;
+  }
+
+  .container {
+    justify-content: center;
+  }
+}
+
+@media (min-width: 85em) {
+  .top3 {
+    width: 42rem;
   }
 }
