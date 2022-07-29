@@ -1,20 +1,39 @@
 import "./App.css";
 import { mockData } from "./mockData.js";
 import { CardComponent } from "./cardComponent.js";
+import { useState } from "react";
 
 function App() {
-  const sortedDrivers = function (data) {
-    data.sort((a, b) => {
+  const [drivers, setDrivers] = useState(mockData);
+
+  const sortDrivers = () => {
+    return drivers.sort((a, b) => {
       return b.points - a.points;
     });
   };
-  sortedDrivers(mockData);
+
+  const handleIncrementFunction = (number) => {
+    const newArray = [...drivers];
+
+    const findDriver = newArray.find((elem) => {
+      return elem.number === number;
+    });
+
+    findDriver.points++;
+
+    setDrivers(newArray);
+  };
 
   return (
     <div className="flex container">
-      {mockData.map((driver, index) => {
+      {sortDrivers().map((driver, index) => {
         return (
-          <CardComponent key={driver.number} driver={driver} index={index} />
+          <CardComponent
+            key={driver.number}
+            driver={driver}
+            index={index}
+            onIncrement={handleIncrementFunction}
+          />
         );
       })}
     </div>
