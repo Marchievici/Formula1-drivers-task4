@@ -1,6 +1,6 @@
-import "./App.css";
+import "./styles/App.css";
 import { mockData } from "./mockData.js";
-import { CardComponent } from "./cardComponent.js";
+import { CardComponent } from "./components/CardComponent/CardComponent.js";
 import { useState } from "react";
 
 function App() {
@@ -31,7 +31,7 @@ function App() {
           <CardComponent
             key={driver.number}
             driver={driver}
-            index={index}
+            place={index + 1}
             onIncrement={handleIncrementFunction}
           />
         );
